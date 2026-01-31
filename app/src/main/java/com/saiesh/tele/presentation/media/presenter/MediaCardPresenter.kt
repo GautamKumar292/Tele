@@ -1,0 +1,71 @@
+package com.saiesh.tele.presentation.media.presenter
+
+import android.graphics.BitmapFactory
+import android.util.TypedValue
+import android.view.ViewGroup
+import androidx.leanback.widget.ImageCardView
+import androidx.leanback.widget.Presenter
+import com.bumptech.glide.Glide
+import java.io.File
+import com.saiesh.tele.data.cache.image.ImageCache
+import com.saiesh.tele.domain.model.media.MediaItem
+import com.saiesh.tele.domain.model.media.MediaType
+
+class MediaCardPresenter : Presenter() {
+    override fun onCreateViewHolder(parent: ViewGroup): Presenter.ViewHolder {
+        val context = parent.context
+        val cardView = ImageCardView(context).apply {
+            isFocusable = true
+            isFocusableInTouchMode = true
+            val widthPx = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                260f,
+                resources.displayMetrics
+            ).toInt()
+            val heightPx = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                146f,
+                resources.displayMetrics
+            ).toInt()
+            setMainImageDimensions(widthPx, heightPx)
+        }
+        return ViewHolder(cardView)
+    }
+
+    override fun onBindViewHolder(viewHolder: Presenter.ViewHolder, item: Any?) {
+        val media = item as? MediaItem ?: return
+        val cardView = viewHolder.view as ImageCardView
+        cardView.titleText = media.title
+        cardView.contentText = if (media.type == MediaType.Video && media.durationSeconds > 0) {
+            "${media.durationSeconds / 60} min"
+        } else {
+            ""
+        }
+        val imageView = cardView.mainImageView
+        when {
+            !media.thumbnailPath.isNullOrBlank() -> {
+                imageView?.let { target ->
+                    Glide.with(cardView)
+                        .load(File(media.thumbnailPath!!))
+                        .centerCrop()
+                        .into(target)
+                }
+            }
+            media.miniThumbnailBytes != null -> {
+                val bitmap = ImageCache.getMini(media.messageId)
+                    ?: BitmapFactory.decodeByteArray(media.miniThumbnailBytes, 0, media.miniThumbnailBytes.size)
+                        ?.also { decoded -> ImageCache.putMini(media.messageId, decoded) }
+                imageView?.setImageBitmap(bitmap)
+            }
+            else -> imageView?.setImageDrawable(null)
+        }
+    }
+
+    override fun onUnbindViewHolder(viewHolder: Presenter.ViewHolder) {
+        val cardView = viewHolder.view as ImageCardView
+        cardView.mainImageView?.let { imageView ->
+            Glide.with(cardView).clear(imageView)
+        }
+        cardView.mainImage = null
+    }
+}
